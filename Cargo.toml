@@ -1,7 +1,14 @@
 [package]
-name = "async-profiling"
+name = "async-profiling-honeypot"
 version = "0.1.0"
 authors = ["Stu Hood <stuhood@gmail.com>"]
 edition = "2018"
 
+[profile.release]
+# Debug symbols increase the "volume" of profiles significantly... not always clear that they
+# are helpful.
+debug = true
+
 [dependencies]
+scrypt = { version = "0.6", default-features = false }
+tokio = { version = "1.4", features = ["macros", "rt-multi-thread"] }
